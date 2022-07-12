@@ -15,11 +15,18 @@ public class GreetingController {
     public GreetingService service;
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "User") String name){
+    public Greeting greeting(@RequestParam(value = "name", defaultValue = "User") String name) {
         return new Greeting((int) counter.incrementAndGet(), String.format(template, name));
     }
+
     @RequestMapping("/welcome")
-    public String displayMessage(){
+    public String displayMessage() {
         return service.greetingMessage();
+    }
+
+    @GetMapping("/greetingsByName")
+    public String greetingWithUserName(@RequestParam(value = "firstName", defaultValue = "") String firstName,
+                                       @RequestParam(value = "lastName", defaultValue = "") String lastName) {
+        return service.greetingWithUserName(firstName, lastName);
     }
 }
