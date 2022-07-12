@@ -42,4 +42,8 @@ public class GreetingController {
     public List<Greeting> findAllGreetings(){
         return service.findGreetings();
     }
+    @PutMapping("/editGreeting/{id}")
+    public Greeting editGreeting(@RequestBody Greeting greeting, @PathVariable Integer id){
+        return service.editGreeting(greeting, id);
+    }
 }
