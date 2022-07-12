@@ -47,4 +47,9 @@ public class GreetingService {
             return repository.save(existingGreeting);
         }else return null;
     }
+
+    public String deleteGreeting(Integer id) {
+        repository.deleteById(id);
+        return "Data Deleted Successfully ";
+    }
 }
